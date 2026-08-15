@@ -1,4 +1,5 @@
 import { type GameState } from './state.interface';
+import { InputManager } from './input-manager';
 
 export class StateManager {
     private stateStack: GameState[] = [];
@@ -74,5 +75,16 @@ export class StateManager {
 
         const activeState = this.stateStack[this.stateStack.length - 1];
         activeState.render();
+    }
+
+    private inputManager: InputManager;
+
+    constructor(inputManager: InputManager) {
+        this.inputManager = inputManager;
+
+        this.inputManager.setInputCallback((action, data) => {
+            if (this.stateStack.length === 0 || this.isTransitioning) return;
+            this.handleInput(action, data);
+        });
     }
 }
