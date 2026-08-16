@@ -1,4 +1,4 @@
-export type InputAction = 'up' | 'down' | 'left' | 'right' | 'menu' | 'interact' | 'cancel' | 'special'
+export type InputAction = 'up' | 'down' | 'left' | 'right' | 'menu' | 'interact' | 'cancel' | 'special';
 
 export class InputManager {
     private keyMap: Map<string, InputAction> = new Map();
