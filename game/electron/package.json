@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "description": "Electron platform project for Inner Demons Fairbound Crypt.",
-  "main": "build/main.js",
+  "main": "../src/main.js",
   "scripts": {
     "build": "tsc",
     "start": "electron .",
