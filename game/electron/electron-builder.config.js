@@ -1,7 +1,7 @@
 /** @type {import('electron-builder').Configuration} */
 module.exports = {
-  appId: 'com.innerdemons.app',
-  productName: 'Inner Demons',
+  appId: 'com.crypt.innerdemons',
+  productName: 'Inner Demons Fairbound Crypt',
   directories: {
     output: 'dist',
     buildResources: 'assets',

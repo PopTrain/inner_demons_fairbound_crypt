@@ -1,8 +1,8 @@
 {
-  "name": "inner-demons-electron",
+  "name": "inner-demons-fairbound-crypt-electron",
   "private": true,
   "version": "0.0.0",
-  "description": "Electron platform project for Inner Demons.",
+  "description": "Electron platform project for Inner Demons Fairbound Crypt.",
   "main": "build/main.js",
   "scripts": {
     "build": "tsc",
