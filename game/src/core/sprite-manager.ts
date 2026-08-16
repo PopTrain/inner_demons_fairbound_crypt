@@ -28,7 +28,7 @@ export class SpriteManager {
         this.loadedStates.delete(stateId);
     }
 
-    public createSprite(id: string, textureAlias: string, x: number, y: number): PIXI.Sprite {
+    public createSprite(id: string, textureAlias: string, x: number, y: number): PIXI.Sprite | null {
         if (this.sprites.has(id)) {
             console.warn(`[SpriteManager] Sprite with ID ${id} already exists.`);
             return this.sprites.get(id)!;
