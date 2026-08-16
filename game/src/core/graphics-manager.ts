@@ -1,3 +1,4 @@
+import 'pixi.js/unsafe-eval';
 import * as PIXI from 'pixi.js';
 
 export class GraphicsManager {

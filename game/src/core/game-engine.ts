@@ -1,5 +1,7 @@
 import { StateManager } from './state-manager.js';
 import { AudioManager } from './audio-manager.js';
+import { GraphicsManager } from './graphics-manager.js';
+import { SpriteManager } from './sprite-manager.js';
 import { PlayerData } from './player-data.js';
 import { NetworkService } from './network-service.js';
 import { InputManager } from './input-manager.js';
@@ -9,23 +11,30 @@ export class GameEngine {
     private lastTime: number = 0;
     private stateManager: StateManager;
     private audioManager: AudioManager;
+    private graphicsManager: GraphicsManager;
+    private spriteManager: SpriteManager;
     private playerData: PlayerData;
     private networkService: NetworkService;
     private inputManager: InputManager;
     private gameContext: GameContext;
     private isRunning: boolean = false;
 
-    constructor() {
+    constructor(containerId: string) {
         this.inputManager = new InputManager();
         this.audioManager = new AudioManager();
         this.playerData = new PlayerData('player', 'Trainer');
         this.networkService = new NetworkService('ws://localhost:8080');
 
+        this.graphicsManager = new GraphicsManager(containerId);
+        this.spriteManager = new SpriteManager(this.graphicsManager.getStage());
+
         this.gameContext = {
             stateManager: null as unknown as StateManager,
             playerData: this.playerData,
             networkService: this.networkService,
-            audioManager: this.audioManager
+            audioManager: this.audioManager,
+            graphicsManager: this.graphicsManager,
+            spriteManager: this.spriteManager
         };
 
         this.stateManager = new StateManager(this.inputManager);
@@ -34,6 +43,11 @@ export class GameEngine {
 
     public getContext(): GameContext {
         return this.gameContext;
+    }
+
+    public async init(): Promise<void> {
+        await this.graphicsManager.init();
+        console.log('[GameEngine] Graphics initialized successfully.');
     }
 
     public start(): void {
