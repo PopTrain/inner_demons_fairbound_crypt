@@ -66,14 +66,25 @@ export interface EvolutionCondition {
     requiresFriendship?: number;
 }
 
+export interface DemonForm {
+    formId: string;
+    elementalTypes?: ElementalType[];
+    baseStats?: Partial<BaseStats>;
+    movePool?: Partial<MovePool>;
+    triggerCondition?: string;
+}
+
 export interface DemonSpeciesSchema {
     speciesId: string;
     rank: Rank;
+    height: string;
+    weight: string;
     elementalTypes: ElementalType[];
     baseStats: BaseStats;
     training: Training;
     movePool: MovePool;
     evolutionRules: EvolutionCondition[];
+    forms?: DemonForm[];
 }
 
 export type DemonDatabase = Record<string, DemonSpeciesSchema>;

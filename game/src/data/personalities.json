@@ -1,0 +1,22 @@
+[
+    {
+        "id": "brave",
+        "boostedStat": "mattack"
+    },
+    {
+        "id": "stoic",
+        "boostedStat": "mdefense"
+    },
+    {
+        "id": "cunning",
+        "boostedStat": "rattack"
+    },
+    {
+        "id": "loyal",
+        "boostedStat": "rdefense"
+    },
+    {
+        "id": "timid",
+        "boostedStat": "speed"
+    }
+]

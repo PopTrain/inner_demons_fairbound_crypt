@@ -6,18 +6,18 @@ export interface TrainerStats {
 
 export interface SerializedPlayerData {
     id: string;
-    username: string;
+    trainername: string;
     stats: TrainerStats;
 }
 
 export class PlayerData {
     private id: string;
-    private username: string;
+    private trainername: string;
     private stats: TrainerStats;
     
-    constructor(id: string, username: string) {
+    constructor(id: string, trainername: string) {
         this.id = id;
-        this.username = username;
+        this.trainername = trainername;
         this.stats = {
             gold: 1000,
             medals: 0,
@@ -28,14 +28,14 @@ export class PlayerData {
     public serialize(): SerializedPlayerData {
         return {
             id: this.id,
-            username: this.username,
+            trainername: this.trainername,
             stats: { ...this.stats }
         };
     }
 
     public deserialize(data: SerializedPlayerData): void {
         this.id = data.id;
-        this.username = data.username;
+        this.trainername = data.trainername;
         this.stats = { ...data.stats };
     }
 
@@ -59,7 +59,7 @@ export class PlayerData {
         return this.id;
     }
 
-    public getUsername(): string {
-        return this.username;
+    public gettrainername(): string {
+        return this.trainername;
     }
 }

@@ -1,0 +1,44 @@
+[
+    {
+        "id": "heroic",
+        "requiredPersonality": "brave",
+        "trigger": "ON_ENTER_BATTLE",
+        "effectPayload": {
+            "target": "SELF",
+            "statModifier": {
+                "stat": "mattack",
+                "stages": 1
+            }
+        }
+    },
+    {
+        "id": "iron_will",
+        "requiredPersonality": "stoic",
+        "trigger": "ON_ENTER_BATTLE",
+        "effectPayload": {
+            "target": "SELF",
+            "statModifier": {
+                "stat": "mdefense",
+                "stages": 1
+            }
+        }
+    },
+    {
+        "id": "ambush",
+        "requiredPersonality": "cunning",
+        "trigger": "ON_ENTER_BATTLE",
+        "effectPayload": {
+            "target": "OPPONENT",
+            "damageModifier": 1.5
+        }
+    },
+    {
+        "id": "prankster",
+        "requiredPersonality": "cunning",
+        "trigger": "ON_ATTACK",
+        "effectPayload": {
+            "target": "OPPONENT",
+            "statusCondition": "CONFUSED"
+        }
+    }
+]
