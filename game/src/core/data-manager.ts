@@ -16,6 +16,7 @@ export class DataManager {
             this.validateLoad();
         } catch (error) {
             console.error('Critical Error: Failed to load game data.', error);
+            throw error;
         }
     }
 
@@ -40,7 +41,10 @@ export class DataManager {
 
         if (this.demons.size > 0) {
             const firstKey = this.demons.keys().next().value;
-            console.log(`Sample Record [${firstKey}]:`, this.demons.get(firstKey));
+
+            if (firstKey !== undefined) {
+                console.log(`Sample Record [${firstKey}]:`, this.demons.get(firstKey));
+            }
         }
     }
 

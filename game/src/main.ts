@@ -2,7 +2,7 @@ import { GameEngine } from './core/game-engine';
 import { DataManager } from './core/data-manager';
 import './index.css';
 
-window.addEventListener('DOMContentLoaded', async () => {
+const bootstrapGame = async () => {
     console.log('Initializing Game Engine...');
 
     const gameEngine = new GameEngine('game-container');
@@ -19,4 +19,10 @@ window.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error('Failed to initialize the Game Engine:', error);
     }
-});
+};
+
+if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', bootstrapGame);
+} else {
+    bootstrapGame();
+}
