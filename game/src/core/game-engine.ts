@@ -6,6 +6,7 @@ import { PlayerData } from './player-data';
 import { NetworkService } from './network-service';
 import { InputManager } from './input-manager';
 import { FontManager } from './font-manager';
+import { LocalizationSystem } from './localization-manager';
 import { type GameContext } from './game-context';
 
 export class GameEngine {
@@ -17,6 +18,7 @@ export class GameEngine {
     private playerData: PlayerData;
     private networkService: NetworkService;
     private inputManager: InputManager;
+    private localizationManager: LocalizationSystem;
     private gameContext: GameContext;
     private isRunning: boolean = false;
 
@@ -35,7 +37,8 @@ export class GameEngine {
             networkService: this.networkService,
             audioManager: this.audioManager,
             graphicsManager: this.graphicsManager,
-            spriteManager: this.spriteManager
+            spriteManager: this.spriteManager,
+            localizationManager: null as unknown as LocalizationSystem
         };
 
         this.stateManager = new StateManager(this.inputManager);
@@ -52,6 +55,42 @@ export class GameEngine {
         
         await this.graphicsManager.init();
         console.log('[GameEngine] Graphics initialized successfully.');
+
+        try {
+            this.localizationManager = new LocalizationSystem('en');
+
+            const localeFiles = [
+                'crops.csv',
+                'demon_forms.csv',
+                'demons.csv',
+                'items.csv',
+                'mementos.csv',
+                'moves.csv',
+                'personalities.csv',
+                'personality_traits.csv',
+                'phone.csv',
+                'region_map.csv',
+                'text.csv',
+                'trainer_types.csv',
+                'trainers.csv',
+                'types.csv'
+            ];
+
+            for (const fileName of localeFiles) {
+                const response = await fetch(`/locales/${fileName}`);
+                if (!response.ok) {
+                    console.warn(`[GameEngine] Warning: Could not load locale file '${fileName}' (${response.statusText})`);
+                    continue;
+                }
+                const csvContent = await response.text();
+                this.localizationManager.loadCSV(csvContent);
+            }
+
+            this.gameContext.localizationManager = this.localizationManager;
+            console.log('[GameEngine] All localization files loaded and initialized successfully.');
+        } catch (error) {
+            console.error('[GameEngine] Error initializing localization system:', error);
+        }
     }
 
     public start(): void {

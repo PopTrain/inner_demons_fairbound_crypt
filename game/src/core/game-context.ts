@@ -2,6 +2,7 @@ import { type StateManager } from './state-manager';
 import { type AudioManager } from './audio-manager';
 import { type GraphicsManager } from './graphics-manager';
 import { type SpriteManager } from './sprite-manager';
+import { type LocalizationSystem } from './localization-manager';
 import { type PlayerData } from './player-data';
 import { type NetworkService } from './network-service';
 
@@ -10,6 +11,7 @@ export interface GameContext {
     audioManager: AudioManager;
     graphicsManager: GraphicsManager;
     spriteManager: SpriteManager;
+    localizationManager: LocalizationSystem;
     playerData: PlayerData;
     networkService: NetworkService;
 }
