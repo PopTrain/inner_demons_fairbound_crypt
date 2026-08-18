@@ -1,6 +1,6 @@
 {
     "POTION": {
-        "id": "POTION",
+        "itemId": "Potion",
         "category": "Medicine",
         "buyPrice": 300,
         "sellPrice": 150,

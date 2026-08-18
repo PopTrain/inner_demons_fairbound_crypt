@@ -5,6 +5,7 @@ import { SpriteManager } from './sprite-manager';
 import { PlayerData } from './player-data';
 import { NetworkService } from './network-service';
 import { InputManager } from './input-manager';
+import { FontManager } from './font-manager';
 import { type GameContext } from './game-context';
 
 export class GameEngine {
@@ -46,6 +47,9 @@ export class GameEngine {
     }
 
     public async init(): Promise<void> {
+        await FontManager.preloadEngineFonts();
+        console.log('[GameEngine] Fonts loaded successfully.');
+        
         await this.graphicsManager.init();
         console.log('[GameEngine] Graphics initialized successfully.');
     }

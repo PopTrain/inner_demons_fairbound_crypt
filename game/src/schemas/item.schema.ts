@@ -22,7 +22,7 @@ export interface ItemEffectPayload {
 }
 
 export interface GameItem {
-    id: ItemId;
+    itemId: ItemId;
     category: ItemCategory;
     buyPrice: number;
     sellPrice: number;
