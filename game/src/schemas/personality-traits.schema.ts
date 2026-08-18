@@ -1,28 +1,32 @@
-export enum StatType {
-    M_ATTACK = 'mattack',
-    M_DEFENSE = 'mdefense',
-    R_ATTACK = 'rattack',
-    R_DEFENSE = 'rdefense',
-    SPEED = 'speed'
-}
+import type { PersonalityId, StatType } from "./personality.schema";
 
-export enum PersonalityId {
-    BRAVE = 'brave',
-    STOIC = 'stoic',
-    CUNNING = 'cunning',
-    LOYAL = 'loyal',
-    TIMID = 'timid'
-}
-
-export enum TraitId {
-    HEROIC = 'heroic',
-    DETERMINED = 'determined',
-    IRON_WILL = 'iron_will',
-    STALWART = 'stalwart',
-    WEAK_POINT = 'weak_point',
-    PRANKSTER = 'prankster',
-    AMBUSH = 'ambush',
-    VILLAINOUS = 'villainous'
-}
+export type TraitId =
+    | 'Heroic'
+    | 'Determined'
+    | 'Iron_will'
+    | 'Stalwart'
+    | 'Weak_point'
+    | 'Prankster'
+    | 'Ambush'
+    | 'Villainous';
 
 export type TraitTrigger = 'ON_ENTER_BATTLE' | 'ON_ATTACK' | 'ON_DAMAGED' | 'ON_FAINT' | 'PASSIVE';
+
+export type TargetType = 'SELF' | 'OPPONENT' | 'FIELD';
+
+export interface PersonalityTrait {
+    id: TraitId;
+    requiredPersonality: PersonalityId;
+    trigger: TraitTrigger;
+    effectPayload: {
+        target: TargetType;
+        statModifier?: {
+            stat: StatType;
+            stages: number
+        };
+        damageModifier?: number;
+        statusCondition?: string;
+    };
+}
+
+export type PersonalityTraitList = PersonalityTrait[];

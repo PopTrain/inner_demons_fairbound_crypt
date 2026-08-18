@@ -1,22 +1,22 @@
-[
-    {
-        "id": "brave",
+{
+    "BRAVE": {
+        "id": "Brave",
         "boostedStat": "mattack"
     },
-    {
-        "id": "stoic",
+    "STOIC": {
+        "id": "Stoic",
         "boostedStat": "mdefense"
     },
-    {
-        "id": "cunning",
+    "CUNNING": {
+        "id": "Cunning",
         "boostedStat": "rattack"
     },
-    {
-        "id": "loyal",
+    "LOYAL": {
+        "id": "Loyal",
         "boostedStat": "rdefense"
     },
-    {
-        "id": "timid",
+    "TIMID": {
+        "id": "Timid",
         "boostedStat": "speed"
     }
-]
+}
