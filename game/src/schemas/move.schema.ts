@@ -1,14 +1,7 @@
 import { type ElementalType } from './type-chart.schema';
+import { type StatusEffectCategory } from './status-effects.schema';
 
 export type MoveCategory = 'Melee' | 'Ranged' | 'Status';
-
-export type StatusAilment =
-    | 'Burn'
-    | 'Frostbite'
-    | 'Paralysis'
-    | 'Poison'
-    | 'Sleep'
-    | 'Confuse';
 
 export interface StatModifier {
     stat: 'hp' | 'stamina' | 'mattack' | 'mdefense' | 'rattack' | 'rdefense' | 'speed';
@@ -18,7 +11,7 @@ export interface StatModifier {
 
 export interface SecondaryEffect {
     chance: number;
-    statusAilment?: StatusAilment;
+    statusAilment?: StatusEffectCategory;
     statModifiers?: StatModifier[];
 }
 
