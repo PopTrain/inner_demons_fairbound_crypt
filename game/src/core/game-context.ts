@@ -1,9 +1,9 @@
-import { type StateManager } from './state-manager.js';
-import { type AudioManager } from './audio-manager.js';
-import { type GraphicsManager } from './graphics-manager.js';
-import { type SpriteManager } from './sprite-manager.js';
-import { type PlayerData } from './player-data.js';
-import { type NetworkService } from './network-service.js';
+import { type StateManager } from './state-manager';
+import { type AudioManager } from './audio-manager';
+import { type GraphicsManager } from './graphics-manager';
+import { type SpriteManager } from './sprite-manager';
+import { type PlayerData } from './player-data';
+import { type NetworkService } from './network-service';
 
 export interface GameContext {
     stateManager: StateManager;

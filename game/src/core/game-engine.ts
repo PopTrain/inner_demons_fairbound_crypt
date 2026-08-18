@@ -1,11 +1,11 @@
-import { StateManager } from './state-manager.js';
-import { AudioManager } from './audio-manager.js';
-import { GraphicsManager } from './graphics-manager.js';
-import { SpriteManager } from './sprite-manager.js';
-import { PlayerData } from './player-data.js';
-import { NetworkService } from './network-service.js';
-import { InputManager } from './input-manager.js';
-import { type GameContext } from './game-context.js';
+import { StateManager } from './state-manager';
+import { AudioManager } from './audio-manager';
+import { GraphicsManager } from './graphics-manager';
+import { SpriteManager } from './sprite-manager';
+import { PlayerData } from './player-data';
+import { NetworkService } from './network-service';
+import { InputManager } from './input-manager';
+import { type GameContext } from './game-context';
 
 export class GameEngine {
     private lastTime: number = 0;

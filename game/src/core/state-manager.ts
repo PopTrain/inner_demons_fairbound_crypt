@@ -1,4 +1,4 @@
-import { type GameState } from './state.interface.js';
+import { type GameState } from './state.interface';
 import { InputManager } from './input-manager';
 
 export class StateManager {
