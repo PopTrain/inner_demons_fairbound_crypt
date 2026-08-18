@@ -2,6 +2,7 @@ import { StateManager } from './state-manager';
 import { AudioManager } from './audio-manager';
 import { GraphicsManager } from './graphics-manager';
 import { SpriteManager } from './sprite-manager';
+import { UIManager } from './ui-manager';
 import { PlayerData } from './player-data';
 import { NetworkService } from './network-service';
 import { InputManager } from './input-manager';
@@ -15,6 +16,7 @@ export class GameEngine {
     private audioManager: AudioManager;
     private graphicsManager: GraphicsManager;
     private spriteManager: SpriteManager;
+    private uiManager: UIManager;
     private playerData: PlayerData;
     private networkService: NetworkService;
     private inputManager: InputManager;
@@ -31,6 +33,9 @@ export class GameEngine {
         this.graphicsManager = new GraphicsManager(containerId);
         this.spriteManager = new SpriteManager(this.graphicsManager.getStage());
 
+        this.localizationManager = new LocalizationSystem('en');
+        this.uiManager = new UIManager(this.localizationManager);
+
         this.gameContext = {
             stateManager: null as unknown as StateManager,
             playerData: this.playerData,
@@ -38,6 +43,7 @@ export class GameEngine {
             audioManager: this.audioManager,
             graphicsManager: this.graphicsManager,
             spriteManager: this.spriteManager,
+            uiManager: this.uiManager,
             localizationManager: null as unknown as LocalizationSystem
         };
 
