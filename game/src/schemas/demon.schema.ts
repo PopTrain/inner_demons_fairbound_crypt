@@ -1,22 +1,4 @@
-export type ElementalType =
-    | 'Simple'
-    | 'Plant'
-    | 'Fire'
-    | 'Water'
-    | 'Electric'
-    | 'Ice'
-    | 'Air'
-    | 'Bug'
-    | 'Toxic'
-    | 'Brawl'
-    | 'Mind'
-    | 'Dark'
-    | 'Light'
-    | 'Spirit'
-    | 'Earth'
-    | 'Crystal'
-    | 'Metal'
-    | 'Archaic';
+import { type ElementalType } from './type-chart.schema'
 
 export type Rank =
     | 'Kilo'
@@ -62,6 +44,7 @@ export interface EvolutionCondition {
     requiredLevel?: number;
     requiredStats?: Partial<BaseStats>;
     requiredItem?: string;
+    requiredMove?: string;
     requiresTrade?: boolean;
     requiresFriendship?: number;
 }

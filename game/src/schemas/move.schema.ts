@@ -1,4 +1,4 @@
-import { type ElementalType } from './demon.schema';
+import { type ElementalType } from './type-chart.schema';
 
 export type MoveCategory = 'Melee' | 'Ranged' | 'Status';
 
