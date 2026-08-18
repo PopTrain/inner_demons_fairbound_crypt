@@ -1,0 +1,10 @@
+{
+    "FLAGS": {
+        "OBTAINED_STARTER_DEMON": false,
+        "OBTAINED_DEMONARY": false,
+        "DEFEATED_NORMA": false
+    },
+    "Variables": {
+        "TOTAL_DEMONS_CAPTURED": 0
+    }
+}
