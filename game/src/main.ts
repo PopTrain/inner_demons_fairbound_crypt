@@ -1,4 +1,5 @@
 import { GameEngine } from './core/game-engine';
+import { DataManager } from './core/data-manager';
 import './index.css';
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -10,6 +11,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     (window as any).gameContext = gameEngine.getContext();
 
     try {
+        await DataManager.initialize();
         await gameEngine.init();
         
         gameEngine.start();
