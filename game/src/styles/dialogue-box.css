@@ -1,0 +1,42 @@
+#dialogue-box-container {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    pointer-events: auto;
+}
+
+#dialogue-box-container.hidden {
+    display: none
+}
+
+.dialogue-box-inner {
+    width: 256px;
+    height: 48px;
+    background-image: url('/game/public/graphics/ui/dialogue/dialogue_box.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.dialogue-text-container {
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    right: 8px;
+    bottom: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dialogue-line {
+    font-family: 'FixedSys Excelsior', monospace;
+    font-size: 16px;
+    line-height: 16px;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+}

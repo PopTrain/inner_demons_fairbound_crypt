@@ -1,3 +1,4 @@
 @import "tailwindcss";
 
-@import './styles.css';
+@import './styles/main.css';
+@import './styles/dialogue-box.css';
