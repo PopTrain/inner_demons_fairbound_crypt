@@ -26,4 +26,4 @@ jobs:
       - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-            commit_message: "chore(style): auto-format C++ code"
+            commit_message: "chore(style): auto-format TypeScript code"
