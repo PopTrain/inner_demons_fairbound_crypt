@@ -66,12 +66,14 @@ export class GameEngine {
             this.localizationManager = new LocalizationSystem('en');
 
             const localeFiles = [
+                'choices.csv',
                 'crops.csv',
                 'demon_forms.csv',
                 'demons.csv',
                 'items.csv',
                 'mementos.csv',
                 'moves.csv',
+                'names.csv',
                 'personalities.csv',
                 'personality_traits.csv',
                 'phone.csv',

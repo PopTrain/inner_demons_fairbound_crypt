@@ -1,0 +1,40 @@
+#choice-box-container {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    pointer-events: auto;
+}
+
+#choice-box-container.hidden {
+    display: none;
+}
+
+.choice-box-inner {
+    min-width: 64px;
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    font-family: 'FixedSys Excelsior', monospace;
+    font-size: 16px;
+    color: #ffffff;
+    padding: 8px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.choice-item {
+    padding: 4px 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.choice-item:hover,
+.choice-item.selected {
+    background-color: #ffffff;
+    color: #000000;
+}

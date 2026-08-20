@@ -1,6 +1,5 @@
 This project uses Vite, Capacitor, Electron, and PixiJS.
-These frameworks must be installed on your machine before
-attempting to make any additions to the project's code.
+These frameworks must be installed on your local repository (alongside NodeJS) before attempting to make any changes to the project's code.
 
 npm run build
 

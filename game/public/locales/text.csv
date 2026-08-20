@@ -1,1 +1,27 @@
 KEY,en,es-EU,es-LA,pt-EU,pt-LA,fr
+INTRO.step_1,"Hello there! It's so very nice to finally meet you.",
+INTRO.step_2,"Welcome to the Floravo region!"
+INTRO.step_3,"My name is Willow.",
+INTRO.step_4,"But most people refer to me as the Demon Professor.",
+INTRO.step_5,"Before we go any further, I must ask..."
+INTRO.step_6,"Is this your first adventure?",
+INTRO.step_7,"If you need assistance, I am perfectly capable of providing it.",
+INTRO.help_1,
+INTRO.help_2,
+INTRO.help_3,
+INTRO.step_8,"Floravo is inhabited by both man and the fantastical creatures known as Demons.",
+INTRO.step_9,"The people of Floravo live beside Demons. Living, learning, and growing together.",
+INTRO.step_10,"Some people battle others with Demons, fighting for victor and glory.",
+INTRO.step_11,"Others may seek to deepen their bonds with their Demon partners through competition.",
+INTRO.step_12,"And what exactly do I do?",
+INTRO.step_13,"Well, I conduct research on the ecology of Demons across different environments.",
+INTRO.step_14,"My findings have helped people connect with Demons on a deeper level.",
+INTRO.step_15,"But that's enough about me. Why don't you tell me a little bit about yourself?",
+INTRO.step_16,"What exactly do you look like, and what is your name?",
+INTRO.name_confirmation,"So, \\pn, is your name?",
+INTRO.step_17,"\\pn is quite the fine name.",
+INTRO.step_18,"Well then, the time has come.",
+INTRO.step_19,"Your very own grand adventure is about to unfold.",
+INTRO.step_20,"You are bound to discover countless Demons, and new aspects about yourself.",
+INTRO.step_21,"Now go forth, \\pn!"
+INTRO.step_22,"Be sure to visit my laboratory for a special gift.",

@@ -1,11 +1,32 @@
 import { BaseView } from './base-view';
 import { DialogueSystem } from '../core/dialogue-manager';
 
+class NameBoxComponent {
+    private element: HTMLElement | null = null;
+
+    constructor(container: HTMLElement) {
+        this.element = container.querySelector('.name-box');
+    }
+
+    public setName(name?: string | null): void {
+        if (!this.element) return;
+
+        if (name && typeof name === 'string' && name.trim() !== '' && name.toLowerCase() !== 'null') {
+            this.element.textContent = name;
+            this.element.classList.remove('hidden');
+        } else {
+            this.element.textContent = '';
+            this.element.classList.add('hidden');
+        }
+    }
+}
+
 export class DialogueBox extends BaseView {
     private dialogueSystem: DialogueSystem;
     private pages: string[][] = [];
     private currentPageIndex: number = 0;
     private textContainer: HTMLElement | null = null;
+    private nameBoxComponent: NameBoxComponent | null = null;
     private onCompleteCallback?: () => void;
 
     constructor(dialogueSystem: DialogueSystem) {
@@ -16,6 +37,7 @@ export class DialogueBox extends BaseView {
 
     protected getTemplate(): string {
         return `
+            <div class="name-box hidden"></div>
             <div class="dialogue-box-inner">
                 <div class="dialogue-text-container"></div>
             </div>
@@ -24,6 +46,8 @@ export class DialogueBox extends BaseView {
 
     protected afterRender(): void {
         this.textContainer = this.container.querySelector('.dialogue-text-container');
+
+        this.nameBoxComponent = new NameBoxComponent(this.container);
 
         this.container.addEventListener('click', () => {
             this.next();
@@ -41,6 +65,10 @@ export class DialogueBox extends BaseView {
         this.renderCurrentPage();
     }
 
+    public setName(name?: string | null): void {
+        this.nameBoxComponent?.setName(name);
+    }
+
     public next(): void {
         if (this.currentPageIndex < this.pages.length - 1) {
             this.currentPageIndex++;
@@ -52,6 +80,7 @@ export class DialogueBox extends BaseView {
 
     public close(): void {
         this.hide();
+        this.setName(null);
         if (this.onCompleteCallback) {
             this.onCompleteCallback();
             this.onCompleteCallback = undefined;
