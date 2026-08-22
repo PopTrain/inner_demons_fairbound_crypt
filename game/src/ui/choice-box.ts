@@ -15,6 +15,37 @@ export class ChoiceBox extends BaseView {
     constructor() {
         super('choice-box-container');
         this.hide();
+
+        if (this.container) {
+            (this.container as any).__choiceBox = this;
+        }
+    }
+
+    private static getChoiceBox(): ChoiceBox {
+        const container = document.getElementById('choice-box-container');
+        if (container && (container as any).__choiceBox) {
+            return (container as any).__choiceBox as ChoiceBox;
+        }
+        throw new Error('[ChoiceBox] Active instance not found in the DOM.');
+    }
+
+    public static showChoices(options: string[], callback: (selectedOption: string) => void): void {
+        const instance = ChoiceBox.getChoiceBox();
+        const formattedChoices: ChoiceOption[] = [];
+
+        for (let i = 0; i < options.length; i += 2) {
+            const text = options[i]?.replace(/^"|"$/g, '') || '';
+            const label = options[i + 1];
+
+            if (text && label) {
+                formattedChoices.push({
+                    text: text,
+                    callback: () => callback(label)
+                });
+            }
+        }
+        
+        instance.showChoices(formattedChoices);
     }
 
     protected getTemplate(): string {

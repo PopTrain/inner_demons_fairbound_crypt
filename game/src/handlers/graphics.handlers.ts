@@ -1,11 +1,10 @@
-import { type ScriptCommand } from '../schemas/script.schema';
-import { ScriptInterpreter } from '../core/script-interpreter';
+import { GraphicsController } from '../core/graphics-controller';
 import { type CommandHandler } from './script-handlers';
 
 export const graphicsHandlers: Record<string, CommandHandler> = {
-    FADE: (cmd: ScriptCommand, interpreter: ScriptInterpreter) => {
+    FADE: (cmd, interpreter) => {
         if (cmd.type === 'FADE') {
-            const graphics = interpreter.getGraphics();
+            const graphics = GraphicsController.getGraphics();
             const duration = cmd.duration <= 10 ? cmd.duration * 1000 : cmd.duration;
 
             graphics.fadeScreen(cmd.direction, cmd.color, duration, () => {
@@ -14,18 +13,18 @@ export const graphicsHandlers: Record<string, CommandHandler> = {
         }
     },
 
-    SHOW_GRAPHIC: (cmd: ScriptCommand, interpreter: ScriptInterpreter) => {
+    SHOW_GRAPHIC: (cmd, interpreter) => {
         if (cmd.type === 'SHOW_GRAPHIC') {
-            const graphics = interpreter.getGraphics();
-            graphics.showGraphic(cmd.graphic, cmd.action, () => {
+            const graphics = GraphicsController.getGraphics();
+            graphics.showGraphic(cmd.graphic, cmd.direction || 'in', () => {
                 interpreter.executeNext();
             });
         }
     },
 
-    SHOW_TRAINER_SPRITE: (cmd: ScriptCommand, interpreter: ScriptInterpreter) => {
+    SHOW_TRAINER_SPRITE: (cmd, interpreter) => {
         if (cmd.type === 'SHOW_TRAINER_SPRITE') {
-            const graphics = interpreter.getGraphics();
+            const graphics = GraphicsController.getGraphics();
             graphics.showGraphic(cmd.sprite, 'in', () => {
                 interpreter.executeNext();
             });

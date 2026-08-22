@@ -7,6 +7,10 @@ export class ScriptInterpreter {
     private isRunning: boolean = false;
     private labels: Map<string, number> = new Map();
 
+    public isRunningActive(): boolean {
+        return this.isRunning;
+    }
+
     public loadScript(commands: ScriptCommand[]) {
         this.queue = commands;
         this.currentIndex = 0;
@@ -34,7 +38,7 @@ export class ScriptInterpreter {
     }
 
     public executeNext() {
-        if (this.currentIndex >= this.queue.length) {
+        if (!this.isRunning || this.currentIndex >= this.queue.length) {
             this.isRunning = false;
             return;
         }

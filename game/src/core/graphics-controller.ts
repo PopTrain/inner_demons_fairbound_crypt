@@ -16,6 +16,21 @@ export class GraphicsController {
         stage.addChild(this.fadeGraphics);
         this.updateFadeOverlay(0x000000, 0);
         this.fadeGraphics.visible = false;
+
+        const canvas = this.graphicsManager.app.canvas;
+        if (canvas) {
+            (canvas as any).__graphicsController = this;
+        }
+    }
+
+    public static getGraphics(): GraphicsController {
+        const canvas = document.querySelector('canvas');
+        
+        if (canvas && (canvas as any).__graphicsController) {
+            return (canvas as any).__graphicsController as GraphicsController;
+        }
+        
+        throw new Error('[GraphicsController] Active graphics controller not found in the DOM.');
     }
 
     private parseColor(colorStr: string): number {

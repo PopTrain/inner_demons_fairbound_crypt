@@ -33,6 +33,28 @@ export class DialogueBox extends BaseView {
         super('dialogue-box-container');
         this.dialogueSystem = dialogueSystem
         this.hide();
+
+        if (this.container) {
+            (this.container as any).__dialogueBox = this;
+        }
+    }
+
+    private static getDialogueBox(): DialogueBox {
+        const container = document.getElementById('dialogue-box-container');
+        if (container && (container as any).__dialogueBox) {
+            return (container as any).__dialogueBox as DialogueBox;
+        }
+        throw new Error('[DialogueBox] Active instance not found in the DOM.');
+    }
+
+    public static startDialogue(key: string, onComplete: () => void): void {
+        const instance = DialogueBox.getDialogueBox();
+        instance.startDialogueInstance(key, undefined, undefined, onComplete);
+    }
+
+    public static setNameBox(name?: string | null): void {
+        const instance = DialogueBox.getDialogueBox();
+        instance.setName(name);
     }
 
     protected getTemplate(): string {
@@ -67,6 +89,17 @@ export class DialogueBox extends BaseView {
 
     public setName(name?: string | null): void {
         this.nameBoxComponent?.setName(name);
+    }
+
+    public startDialogueInstance(key: string, lang?: string, params?: Record<string, string | number>, onComplete?: () => void): void {
+        this.dialogueSystem.setLinesPerPage(3);
+
+        this.pages = this.dialogueSystem.getDialoguePages(key, lang, params);
+        this.currentPageIndex = 0;
+        this.onCompleteCallback = onComplete;
+
+        this.show();
+        this.renderCurrentPage();
     }
 
     public next(): void {

@@ -1,21 +1,20 @@
 import { type CommandHandler } from '../handlers/script-handlers';
 import { audioHandlers } from '../handlers/audio.handlers';
 import { dialogueHandlers } from '../handlers/dialogue.handlers';
-import { GraphicsManager } from './graphics-manager';
+import { graphicsHandlers } from '../handlers/graphics.handlers';
 
 export const ScriptRegistry: Record<string, CommandHandler> = {
     ...audioHandlers,
     ...dialogueHandlers,
-
-    FADE: (cmd, interpreter) => {
-        if (cmd.type === 'FADE') {
-            GraphicsManager.fadeScreen(cmd.direction, cmd.color, cmd.duration, () => {
-                interpreter.executeNext();
-            });
-        }
-    },
+    ...graphicsHandlers,
 
     LABEL: (cmd, interpreter) => {
-        interpreter.executeNext();
+        if (cmd.type === 'LABEL') {
+            console.log(`[ScriptRegistry] Interpreter passed label marker: ${cmd.name}`);
+            
+            interpreter.executeNext();
+        } else {
+            interpreter.executeNext();
+        }
     }
 }
